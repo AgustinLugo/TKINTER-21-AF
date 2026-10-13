@@ -1,0 +1,8 @@
+| ID | Prueba | Pasos | Resultado Esperado | Excepción Comprobada |
+|---|---|---|---|---|
+| **1** | Agregar evento vacío | Dejar el texto en blanco y tocar "Agregar evento". | Muestra un aviso diciendo *"Escribe el nombre del evento."* | **Validación de campo obligatorio:** Evita guardar eventos sin nombre. |
+| **2** | Agregar solo espacios | Escribir espacios en blanco y tocar "Agregar evento". | El sistema borra los espacios y muestra la advertencia de nombre vacío. | **Limpieza de datos (`.strip()`):** Evita registrar texto invisible. |
+| **3** | Eliminar sin seleccionar | Tocar "Eliminar evento" sin marcar nada de la lista. | Muestra un aviso diciendo *"Seleccioná un evento para eliminar."*. | **Control de selección nula:** Evita error por falta de selección (`curselection`). |
+| **4** | Eliminar en fecha vacía | Hacer clic en "No hay eventos..." y tocar "Eliminar evento". | Muestra aviso de que no hay eventos o no realiza ninguna acción. | **Control de índice (`IndexError`):** Evita borrar el mensaje de texto por defecto. |
+| **5** | Cancelar eliminación | Seleccionar un evento, tocar "Eliminar" y presionar "No". | La ventana de confirmación se cierra y el evento no se borra. | **Confirmación de usuario:** Control del botón cancelar (`askyesno`). |
+| **6** | Consultar fecha sin eventos | Hacer clic en cualquier día que no tenga eventos guardados. | La lista cambia automáticamente a *"No hay eventos para esta fecha."*. | **Manejo de clave inexistente (`KeyError`):** Controla la búsqueda en el diccionario. |
